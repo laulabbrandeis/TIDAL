@@ -39,7 +39,7 @@ foreach my $ident (keys %$ehash) {
 	my $f_ref = $fhash->{$ident};
 	
 	if ((@$e_ref > 1) || (@$f_ref > 1)) {
-	    # The multiple reads mapped to transposon or masked genome	
+	    # The multiple mapping on either the front on end 22mers
 	    
 	} elsif ((@$e_ref == 1) || (@$f_ref == 1)) {
 	    # consider only the uniquely mapped reads

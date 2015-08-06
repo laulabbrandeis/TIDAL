@@ -45,7 +45,7 @@ database=$masked_genomedb
 
 input=$frontfile
 output=$input".gendel.sam"
-bowtie -f -v $mismatch -S -k 100000 -m 100000 --strata --best -p 12 $database $input $output
+bowtie -f -v $mismatch -S -k 5 -m 5 --strata --best -p 12 $database $input $output
 
 perl $CODEDIR/separate_aligned_unaligned.pl -f $input -s $output 
 mv $input.al $input.gendel
@@ -65,7 +65,7 @@ database=$masked_genomedb
 
 input=$endfile
 output=$input".gendel.sam"
-bowtie -f -v $mismatch -S -k 100000 -m 100000 --strata --best -p 12 $database $input $output
+bowtie -f -v $mismatch -S -k 5 -m 5 --strata --best -p 12 $database $input $output
 
 perl $CODEDIR/separate_aligned_unaligned.pl -f $input -s $output 
 mv $input.al $input.gendel
