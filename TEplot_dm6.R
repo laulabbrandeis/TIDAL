@@ -40,7 +40,7 @@ for (j in seq(along=chrlist)) {
 	plot(ratio$interval[tt],ratio$insert_score[tt],ylim = c(-2.5,2.5), cex=2, xlab = paste(i),ylab ="", yaxt="n", pch = ".",col = colors()[88], type="n")
 #	axis(2,at=-2:2, las=2, labels=c("dep"letters[1:5]))
 #	axis(2,at=-2:2, las=2, labels=c("Dep.CR>4 ", "Dep.CR<=4", "", "Ins.CR>4 ", "Ins.CR<=4"))
-	axis(2,at=c(-2, -1, 1,2), las=2, labels=c("Del.CR>4 ", "Del.CR<=4", "Ins.CR<=4 ", "Ins.CR>4"))
+	axis(2,at=c(-2, -1, 1,2), las=2, labels=c("Del.CR>=4 ", "Del.CR<4", "Ins.CR<4 ", "Ins.CR>=4"))
 	abline(h=0, col=c("black"), lty=1, lwd=0.5)
 
 
