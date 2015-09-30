@@ -125,7 +125,7 @@ foreach my $chr (keys %$lenchr) {
 foreach my $line (@sortarr) {
     my $identifier=$line->[0];
     my $chr = $line->[1];
-    my $coverage_ratio = $line->[12];
+    my $coverage_ratio = $line->[13];
     
 #------------ additional code for deletion line
     my $site = $line->[2];
