@@ -3,6 +3,6 @@ TIDAL Installation
 
 Installation instructions.
 
-Additionakl help
+Additional help
 ----------------
 extra information
