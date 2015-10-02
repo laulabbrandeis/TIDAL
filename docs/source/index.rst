@@ -1,28 +1,44 @@
-Welcome to TIDAL's documentation (updated) !
-============================================
+TIDAL Documentation
+===================
 
-Description of TIDAL
-====================
-Brief description of TIDAL::
+For code visit `GitHub <https://github.com/laulabbrandeis/TIDAL>`_
+
+
+About TIDAL
+###########
+TIDAL is pipeline built to identify Transposon Insertion and Depletion in flies. The pipeline uses shell scrips, PERL, C and a combination of other publicly available tools. TIDAL uses a split read approach to identify Transposon Insertion and Depletion sites, and addition steps are implemented to reduce false positives 
+
+Features
+--------
+- Flexible (TIDAL can be run with SRA files, Paired End and Single End libraries)
+- Annotation Rich (TIDAL outputs have detailed annotation)
+- Increased Specificity (Less false positives in outputs)
+- Coverage Ratio
+
+
+Brief code block
+::
 
     print 'Hello'
     >>> Hello
 
-Guide
+
+Contents
 --------
-
-
-Contents:
 
 .. toctree::
    :maxdepth: 2
 
    installation
+   run
+   outputs
 
-Indices and tables
-==================
 
-* :ref:`genindex`
-* :ref:`modindex`
-* :ref:`search`
+Support
+-------
+If you are having issues, please contact us directly or create a github issue.
+
+License
+-------
+The project is licensed under the BSD license (not sure what to put here).
 

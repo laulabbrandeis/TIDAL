@@ -1,5 +1,5 @@
-TIDAL Installation
-=================================
+Installation
+============
 
 Installation instructions.
 
