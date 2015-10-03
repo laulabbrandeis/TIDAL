@@ -22,6 +22,7 @@ MASKED_GENOME="/nlmusr/reazur/linux/GENOMES/dm6/dm6.fa.masked"
 repeat_masker_file="/nlmusr/reazur/linux/NELSON/TIDAL/annotation/repmasker_dm6_track.txt"
 refseq_annotationfile="/nlmusr/reazur/linux/NELSON/TIDAL/annotation/refflat_dm6.txt"
 table_lookup="/nlmusr/reazur/linux/NELSON/TIDAL/annotation/Tidalbase_Dmel_TE_classifications_2015.txt"
+chrlen_file="/nlmusr/reazur/linux/NELSON/TIDAL/annotation/dm6.chr.len"
 #----------------- End initialization -------------------
 
 
@@ -136,7 +137,7 @@ perl $CODEDIR/combined_depletion_coverage.pl -s $read_len $coverage_file_5prime 
 
 #--------------------------------------------------------
 window=5000
-chrlen_file="/nlmusr/reazur/linux/GENOMES/dm6/dm6.chr.len"
+#chrlen_file="/nlmusr/reazur/linux/GENOMES/dm6/dm6.chr.len"
 #---------------------------------------
 #annotationFile=$prefix"_level1siteannotation.xls"
 #depletiontFile=$prefix"_depletion_level1.xls"

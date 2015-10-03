@@ -19,6 +19,7 @@ consensus_TEdb="/nlmusr/reazur/linux/NELSON/TIDAL/annotation/dm_TE"
 FREECDIR="/nlmusr/reazur/linux/SOFTWARE/FREEC"
 GENOME="/nlmusr/reazur/linux/GENOMES/dm6/dm6.fa"
 refseq_annotationfile="/nlmusr/reazur/linux/NELSON/TIDAL/annotation/refflat_dm6.txt"
+chrlen_file="/nlmusr/reazur/linux/NELSON/TIDAL/annotation/dm6.chr.len"
 #----------------- End initialization -------------------
 pushd insertion
 
@@ -229,7 +230,7 @@ perl $CODEDIR/prepare_insertion_annotation_final.pl -p $prefix dump.txt > $Inser
 rm dump.txt
 
 window=5000
-chrlen_file="/nlmusr/reazur/linux/GENOMES/dm6/dm6.chr.len"
+#chrlen_file="/nlmusr/reazur/linux/GENOMES/dm6/dm6.chr.len"
 freec_ratio=$prefix"_freec_ratio.txt"
 outputfile=$prefix"_insert_fixed_bin_"$window".txt"
 perl $CODEDIR/fixed_bin_sites_insertion.pl -w $window -l $chrlen_file -r $freec_ratio $Insert_Annotated > $outputfile
