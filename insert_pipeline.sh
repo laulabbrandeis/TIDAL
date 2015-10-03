@@ -2,13 +2,10 @@
 #!/bin/sh
 
 # Input for this pipeline is the .uq file
-# $1 = OSS_C.fastq.uq
 # for usage: pass filename and read length
 # ./insert_pipeline.sh libname.fastq.uq 151
 
-#input=$1
 prefix=${1%.fastq.uq*}
-#read_len=151
 read_len=$2
 #----------------- Initializations -----------------
 #both bowtie and bowtie2 db have the same name
@@ -20,6 +17,8 @@ FREECDIR="/nlmusr/reazur/linux/SOFTWARE/FREEC"
 GENOME="/nlmusr/reazur/linux/GENOMES/dm6/dm6.fa"
 refseq_annotationfile="/nlmusr/reazur/linux/NELSON/TIDAL/annotation/refflat_dm6.txt"
 chrlen_file="/nlmusr/reazur/linux/NELSON/TIDAL/annotation/dm6.chr.len"
+chrDir="/nlmusr/reazur/linux/GENOMES/dm6"
+gemMappabilityFile="/nlmusr/reazur/linux/GENOMES/dm6/gem/gem_mappability_dm6_100mer.mappability"
 #----------------- End initialization -------------------
 pushd insertion
 
@@ -49,7 +48,7 @@ samfile=$output
 conf_file="conf_"$prefix".txt"
 
 #create the conf file for dm6, -b build, -s stepsize
-perl $CODEDIR/create_freec_conf_file.pl -b dm6 -s 5000 $samfile > $conf_file
+perl $CODEDIR/create_freec_conf_file.pl -b dm6 -s 5000 -c $chrDir -g $gemMappabilityFile -l $chrlen_file $samfile > $conf_file
 ratio_file=$samfile"_ratio.txt"
 
 $FREECDIR/freec -conf $conf_file

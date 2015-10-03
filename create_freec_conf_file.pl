@@ -6,15 +6,21 @@ use Getopt::Std;
 my %option;
 my $build="dm6";
 my $stepsize=5000;
-getopts( 'b:s:h', \%option );
+my $chr_Files = "";
+my $gem_Mappability_Files = "";
+my $chr_len = "";
+getopts( 'b:s:c:g:l:h', \%option );
 if ( $option{h} ) {
-    die "perl create_freec_conf_file.pl -b dm3|dm6 samfile -s 1000|5000\n";
+    die "perl create_freec_conf_file.pl -b dm3|dm6 samfile -s 1000|5000 -c location of chromosome files (each chromosome in a separate file) -g gem mappability files -l chr length file\n";
 }
 
 
 if ( $option{b} &&  $option{s}) {
     $build = $option{b};
     $stepsize = $option{s};
+    $chr_Files = $option{c};
+    $gem_Mappability_Files = $option{g};
+    $chr_len = $option{l};
 }
 
 my $input_samfile = $ARGV[0];
@@ -27,7 +33,7 @@ print <<EOF;
 [general]
 
 #The parameters chrLenFile and ploidy are required.
-chrLenFile = /nlmusr/reazur/linux/GENOMES/dm3/dm3.chr.len
+chrLenFile = $chr_len
 ploidy = 2
 
 #breakPointThreshold = .8
@@ -38,7 +44,7 @@ BedGraphOutput=TRUE
 #coefficientOfVariation = 0.01
 window = 5000
 step=$stepsize
-chrFiles = /nlmusr/reazur/linux/GENOMES/dm3
+chrFiles = $chr_Files
 
 
 
@@ -51,7 +57,7 @@ maxExpectedGC = 0.45
 #outputDir = test
 
 minMappabilityPerWindow = 0.90
-gemMappabilityFile = /nlmusr/reazur/linux/GENOMES/dm3/gem/gem_mappability_dm3_100mer
+gemMappabilityFile = $gem_Mappability_Files
 #uniqueMatch=TRUE
 
 #breakPointType = 4
@@ -76,7 +82,7 @@ print <<EOF;
 [general]
 
 #The parameters chrLenFile and ploidy are required.
-chrLenFile = /nlmusr/reazur/linux/GENOMES/dm6/dm6.chr.len
+chrLenFile = $chr_len
 ploidy = 2
 
 #breakPointThreshold = .8
@@ -87,7 +93,7 @@ BedGraphOutput=TRUE
 #coefficientOfVariation = 0.01
 window = 5000
 step=$stepsize
-chrFiles = /nlmusr/reazur/linux/GENOMES/dm6
+chrFiles = $chr_Files
 
 
 
@@ -100,7 +106,7 @@ maxExpectedGC = 0.45
 #outputDir = test
 
 minMappabilityPerWindow = 0.90
-gemMappabilityFile = /nlmusr/reazur/linux/GENOMES/dm6/gem/gem_mappability_dm6_100mer.mappability
+gemMappabilityFile = $gem_Mappability_Files
 #uniqueMatch=TRUE
 
 #breakPointType = 4
