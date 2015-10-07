@@ -52,7 +52,7 @@ perl $CODEDIR/create_freec_conf_file.pl -b dm6 -s 5000 -c $chrDir -g $gemMappabi
 ratio_file=$samfile"_ratio.txt"
 
 $FREECDIR/freec -conf $conf_file
-# run the R script for dm6
+# run the R script for dm6 provided by FREEC for visualization
 cat $FREECDIR/scripts/makeGraph_dm6.R | R --slave --args $prefix $ratio_file
 mv $ratio_file".pdf" $prefix"_freec_cnv.pdf"
 mv $ratio_file $prefix"_freec_ratio.txt"
