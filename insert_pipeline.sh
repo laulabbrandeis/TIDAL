@@ -19,6 +19,7 @@ refseq_annotationfile="/nlmusr/reazur/linux/NELSON/TIDAL/annotation/refflat_dm6.
 chrlen_file="/nlmusr/reazur/linux/NELSON/TIDAL/annotation/dm6.chr.len"
 chrDir="/nlmusr/reazur/linux/GENOMES/dm6"
 gemMappabilityFile="/nlmusr/reazur/linux/GENOMES/dm6/gem/gem_mappability_dm6_100mer.mappability"
+fly_virus_structure_repbase_DB="/nlmusr/reazur/linux/NELSON/TIDAL/annotation/fly_virus_structure_repbase"
 #----------------- End initialization -------------------
 pushd insertion
 
@@ -70,7 +71,7 @@ $CODEDIR/convert_sam_sorted_bam.sh $samfile
 #-----------------------------
 
 mismatch=3
-database="/nlmusr/reazur/linux/NELSON/TIDAL/annotation/fly_virus_structure_repbase"
+database=$fly_virus_structure_repbase_DB
 input=$prefix".filter"
 output=$input".sam"
 bowtie -f -v $mismatch -S -k 2 -m 100000 -p 9 $database $input $output
