@@ -38,7 +38,6 @@ ptf
     fastq_file=$libid".fastq"
     mkdir $libid
     mv $sra_fastq_file  $libid/$fastq_file
- #   cp $CODEDIR/TIDAL_from_fastq.sh $libid/
     #now move to that directory and run Tidal
 timestamp=$(date +%T)
     echo -ne "\nRunning TIDAL with $libid $min_len $accession...$timestamp\n" >> run.txt
