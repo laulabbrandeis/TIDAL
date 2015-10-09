@@ -3,7 +3,6 @@
 #$1
 #$2
 CODEDIR="/nlmusr/reazur/linux/NELSON/TIDAL/CODE"
-GHOME="/nlmusr/gchirn/linux"
 in=$1
 out=$2
 text=$3

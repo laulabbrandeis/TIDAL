@@ -1,5 +1,6 @@
 #!/bin/sh
-CODEDIR="/nlmusr/reazur/linux/NELSON/TIDAL/CODE"
+#CODEDIR="/nlmusr/reazur/linux/NELSON/TIDAL/CODE"
+CODEDIR=$2
 ########################################################
 ## Generate qty report file (for generating qc plot) ###
 ########################################################

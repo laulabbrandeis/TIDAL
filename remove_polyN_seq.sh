@@ -1,7 +1,8 @@
 #!/bin/sh
 
-#HOME="/nlmusr/gchirn/linux"
-CODEDIR="/nlmusr/reazur/linux/NELSON/TIDAL/CODE"
+#Location of TIDAL code
+#CODEDIR="/nlmusr/reazur/linux/NELSON/TIDAL/CODE"
+CODEDIR=$2
 #$1=libname.fastq
 
 cat $1 > z0.$1
