@@ -17,7 +17,7 @@ echo "Done with quality control"
 mv $finallib $SElib
 
 
-$CODEDIR/ngs_single_end_pre_mapping_qc.sh $SElib 
+$CODEDIR/ngs_single_end_pre_mapping_qc.sh $SElib $CODEDIR
 
 uqfile=$SElib".uq"
 
@@ -25,9 +25,8 @@ uqfile=$SElib".uq"
 #----------------------------------
 # remove ployN characters ...
 #---------------------------------------
-$CODEDIR/remove_polyN_seq.sh $uqfile
+$CODEDIR/remove_polyN_seq.sh $uqfile $CODEDIR
 polyn_output=$1".uq.polyn"
-#$RHOME/CORE/writeqc.sh $input $polyn_output polyN_filter
 
 #-------------------------------------------
 
