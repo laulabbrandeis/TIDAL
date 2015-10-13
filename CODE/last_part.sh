@@ -2,7 +2,8 @@
 
 #pass the fastq filename as argument
 prefix=${1%.fastq*}
-CODEDIR="/nlmusr/reazur/linux/NELSON/TIDAL/CODE"
+#CODEDIR="/nlmusr/reazur/linux/NELSON/TIDAL/CODE"
+CODEDIR=$2
 
 #the two necessary files in insertion directory
 gzip insertion/$prefix".noGEN"

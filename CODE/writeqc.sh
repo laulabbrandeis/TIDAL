@@ -2,7 +2,7 @@
 
 #$1
 #$2
-CODEDIR="/nlmusr/reazur/linux/NELSON/TIDAL/CODE"
+#CODEDIR="/nlmusr/reazur/linux/NELSON/TIDAL/CODE"
 in=$1
 out=$2
 text=$3
@@ -24,13 +24,16 @@ echo -ne "\t$percent%\n" >> summary
 
 
 echo -ne "   reads: " >> summary
-before=$(grep "^>" $in | cut -d':' -f2 | $CODEDIR/sum ) 
+#calculate the sum of reads
+#before=$(grep "^>" $in | cut -d':' -f2 | $CODEDIR/sum ) 
+before=$(grep "^>" $in | cut -d':' -f2 | sed 's/ //g' | sed 's/  //g' | grep -v '^$' | sed 's/^/(/' | sed 's/$/)/' | tr '\n' '+' | sed 's/+$/=/' | tr '=' '\n' | bc -l )
 echo -ne "\t$before" >> summary
 
 
 
-
-after=$(grep "^>" $out | cut -d':' -f2 | $CODEDIR/sum )
+#calculate the sum of reads
+#after=$(grep "^>" $out | cut -d':' -f2 | $CODEDIR/sum )
+after=$(grep "^>" $out | cut -d':' -f2 | sed 's/ //g' | sed 's/  //g' | grep -v '^$' | sed 's/^/(/' | sed 's/$/)/' | tr '\n' '+' | sed 's/+$/=/' | tr '=' '\n' | bc -l )
 echo -ne "\t$after" >> summary
 
 percent=$(awk -v n=$after -v d=$before 'BEGIN { printf "%.4f", (n/d)*100 }')

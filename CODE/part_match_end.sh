@@ -1,13 +1,12 @@
 #!/bin/sh
-CODEDIR="/nlmusr/reazur/linux/NELSON/TIDAL/CODE"
-
+#CODEDIR="/nlmusr/reazur/linux/NELSON/TIDAL/CODE"
+CODEDIR=$4
 masked_genomedb=$2
 consensus_TEdb=$3
 libname=$1
 ###################################
 ##  align to masked genome and remove those sequences
 ###################################
-
 
 mismatch=1
 database=$masked_genomedb

@@ -15,4 +15,4 @@ $CODEDIR/data_prep.sh $lib
 $CODEDIR/insert_pipeline.sh $lib".uq.polyn" $read_len  
 $CODEDIR/setup.sh $lib
 $CODEDIR/depletion_pipeline.sh $lib".uq.polyn" $read_len
-$CODEDIR/last_part.sh $lib
+$CODEDIR/last_part.sh $lib $CODEDIR

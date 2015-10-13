@@ -12,16 +12,26 @@ input=$prefix.noGEN
 #polyn_output=$1.polyn
 polyn_output=$1
 #----------------- Initializations -----------------
-#both bowtie and bowtie2 db have the same name
+#change the variables in this section as needed
+#location of TIDAL code
 CODEDIR="/nlmusr/reazur/linux/NELSON/TIDAL/CODE"
+#bowtie and bowtie2 indices, both have the same name in this case
 genomedb="/nlmusr/reazur/linux/GENOMES/dm6/dm6"
+#location of masked genome bowtie indices
 masked_genomedb="/nlmusr/reazur/linux/GENOMES/dm6/dm6_mask"
+#location of consensus TE sequence bowtie indices 
 consensus_TEdb="/nlmusr/reazur/linux/NELSON/TIDAL/annotation/dm_TE"
+#Genome sequence in fasta format (all chromosome concatenated in one file)
 GENOME="/nlmusr/reazur/linux/GENOMES/dm6/dm6.fa"
+#Masked Genome sequence in fasta format (all chromosome concatenated in one file)
 MASKED_GENOME="/nlmusr/reazur/linux/GENOMES/dm6/dm6.fa.masked"
+#Repeat masker file from repbase, downloaded from UCSC genome browser
 repeat_masker_file="/nlmusr/reazur/linux/NELSON/TIDAL/annotation/repmasker_dm6_track.txt"
+#Refseq annotation from UCSC genome browser
 refseq_annotationfile="/nlmusr/reazur/linux/NELSON/TIDAL/annotation/refflat_dm6.txt"
+#location of custom table for classification and coversion from flybase to repbase name, this ensures that the naming is consistent with flybase
 table_lookup="/nlmusr/reazur/linux/NELSON/TIDAL/annotation/Tidalbase_Dmel_TE_classifications_2015.txt"
+#tab delimited file with chromosome name and length
 chrlen_file="/nlmusr/reazur/linux/NELSON/TIDAL/annotation/dm6.chr.len"
 #----------------- End initialization -------------------
 
@@ -137,10 +147,7 @@ perl $CODEDIR/combined_depletion_coverage.pl -s $read_len $coverage_file_5prime 
 
 #--------------------------------------------------------
 window=5000
-#chrlen_file="/nlmusr/reazur/linux/GENOMES/dm6/dm6.chr.len"
-#---------------------------------------
-#annotationFile=$prefix"_level1siteannotation.xls"
-#depletiontFile=$prefix"_depletion_level1.xls"
+
 coverageFile=$strand_coverage_combined
 Depletion_Annotate_file=$prefix"_Depletion_Annotated.txt"
 
@@ -161,12 +168,8 @@ perl $CODEDIR/fixed_bin_sites_depletion.pl -w $window -l $chrlen_file $level1fil
 
  
 rm $prefix.noGEN.*
-#gzip $prefix.filter
-
 cp summary $prefix"_depletion_summary.txt"
-#rm z*
-#rm select*
-#rm $polyn_output"."*
+
 
 popd
 

@@ -8,17 +8,28 @@
 prefix=${1%.fastq.uq*}
 read_len=$2
 #----------------- Initializations -----------------
-#both bowtie and bowtie2 db have the same name
+#change the variables in this section as needed
+#location of TIDAL code
 CODEDIR="/nlmusr/reazur/linux/NELSON/TIDAL/CODE"
+#bowtie and bowtie2 indices, both have the same name in this case
 genomedb="/nlmusr/reazur/linux/GENOMES/dm6/dm6"
+#location of masked genome bowtie indices
 masked_genomedb="/nlmusr/reazur/linux/GENOMES/dm6/dm6_mask"
+#location of consensus TE sequence bowtie indices 
 consensus_TEdb="/nlmusr/reazur/linux/NELSON/TIDAL/annotation/dm_TE"
+#location of FREEC 
 FREECDIR="/nlmusr/reazur/linux/SOFTWARE/FREEC"
+#Genome sequence in fasta format (all chromosome concatenated in one file)
 GENOME="/nlmusr/reazur/linux/GENOMES/dm6/dm6.fa"
+#Refseq annotation from UCSC genome browser
 refseq_annotationfile="/nlmusr/reazur/linux/NELSON/TIDAL/annotation/refflat_dm6.txt"
+#tab delimited file with chromosome name and length
 chrlen_file="/nlmusr/reazur/linux/NELSON/TIDAL/annotation/dm6.chr.len"
+#directory of individual chromosome files needed by FREEC
 chrDir="/nlmusr/reazur/linux/GENOMES/dm6"
+#gem mappability file locationa
 gemMappabilityFile="/nlmusr/reazur/linux/GENOMES/dm6/gem/gem_mappability_dm6_100mer.mappability"
+#bowtie indices of fly virus, structure and repbase sequence
 fly_virus_structure_repbase_DB="/nlmusr/reazur/linux/NELSON/TIDAL/annotation/fly_virus_structure_repbase"
 #----------------- End initialization -------------------
 pushd insertion
@@ -34,7 +45,6 @@ output=$input".sam"
  
 bowtie2 -f --sensitive -p 9 --end-to-end -x $genomedb -S $output -U $input
 #-x localtion of bowtie2 database
-#-f fasta format
 
 perl $CODEDIR/bowtie2_separate_unmatched_read.pl -f $input $output
 
@@ -63,7 +73,7 @@ rm *CNVs
 rm *.cpn
 rm *.cnp
 echo "Done with Freec"
-#run another process in parallel here...
+
 #convert the sam file into a sorted bam file
 $CODEDIR/convert_sam_sorted_bam.sh $samfile
 ##############################
@@ -118,9 +128,9 @@ frontfile=$prefix.noGEN.front
 endfile=$prefix.noGEN.end
 
 #now i have to align consensus_TEdb
-$CODEDIR/part_match.sh $frontfile $masked_genomedb $consensus_TEdb 
+$CODEDIR/part_match.sh $frontfile $masked_genomedb $consensus_TEdb $CODEDIR
 
-$CODEDIR/part_match_end.sh $endfile $masked_genomedb $consensus_TEdb
+$CODEDIR/part_match_end.sh $endfile $masked_genomedb $consensus_TEdb $CODEDIR
 
 #---------------
 # analysis of samfile files to identify candidate insertion sites
@@ -143,8 +153,6 @@ echo -ne "  Number of Candidate sites:\t$uqr\n\n" >> summary
 rm $prefix.noGEN.*
 
 #-----------------------------------newrun.sh 
-#read_len=75
-
 old_candidate_insert=$prefix"_insert.txt"
 blat_query=$prefix"_insert.fa"
 
@@ -165,9 +173,6 @@ perl $CODEDIR/add_blat_score_to_insert.pl -i $old_candidate_insert -b $blat_bed 
 rm $blat_out
 rm $old_candidate_insert 
 rm $blat_bed
-
-#create a boxplot of the blat score
-#R --no-save ---no-restore --no-readline $candidate_insert  < $RHOME/NELSON/Genome_resequence/boxplot_blatscore.R 
 
 
 length=22
@@ -195,13 +200,9 @@ level1sitesannotation=$prefix"_level1siteannotation.xls"
 perl $CODEDIR/rough_annotation_insertion_sites.pl -a $refseq_annotationfile $level1file > $level1sitesannotation
 echo "Level 1 annotation file: $level1sitesannotation" >> summary
 
-#bloxplot of avg_blat_score
-#R --no-save ---no-restore --no-readline $level1file  < $CODEDIR/boxplot_avg_blatscore.R
-
-
 
 #---------------------------------------
-#this part is used for the heterogeniety score at the sitosertion
+#this part is used for the heterogeniety score at the site of insertion
 #---------------------------
 
 level1_corrected_bed=$prefix"_correct_bed.bed"
@@ -230,7 +231,6 @@ perl $CODEDIR/prepare_insertion_annotation_final.pl -p $prefix dump.txt > $Inser
 rm dump.txt
 
 window=5000
-#chrlen_file="/nlmusr/reazur/linux/GENOMES/dm6/dm6.chr.len"
 freec_ratio=$prefix"_freec_ratio.txt"
 outputfile=$prefix"_insert_fixed_bin_"$window".txt"
 perl $CODEDIR/fixed_bin_sites_insertion.pl -w $window -l $chrlen_file -r $freec_ratio $Insert_Annotated > $outputfile
@@ -243,16 +243,9 @@ echo "$outputfile" >> summary
 
 echo "End of pipeline" >> summary
 
-#cp summary $prefix"_summary.xls"
+
 cp summary $prefix"_insertion_summary.txt"
 
-#remove temporary files
-#rm z*
-#rm select*
-#rm $polyn_output"."*
 popd
-#gzip $polyn_output
-#gzip $1
-
 #end of insertion part
 

@@ -1,5 +1,7 @@
-#RHOME="/nlmusr/reazur/linux"
+#update the two variables below
+#location of TIDAL CODE
 CODEDIR="/nlmusr/reazur/linux/NELSON/TIDAL/CODE"
+#location of trimmomatic 
 TRIMMOMATICDIR="/nlmusr/reazur/linux/SOFTWARE/Trimmomatic-0.30"
 prefix=${1%.fastq*}
 
