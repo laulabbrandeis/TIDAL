@@ -9,3 +9,5 @@ http://www.bio.brandeis.edu/laulab/Tidal_Fly/UserGuide_TIDAL_outputs.html
 
 Documentation for installing and running TIDAL on your local machine:
 http://tidal.readthedocs.org/en/latest/index.html
+
+Please use Github issues to bring up any errors that occur with software.
