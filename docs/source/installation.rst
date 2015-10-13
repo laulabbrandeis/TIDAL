@@ -35,7 +35,7 @@ Download *Drosophilia Melanogaster* reference genome and masked reference genome
 - Tidalbase_Dmel_TE_classifications_2015.txt : Custom table for repbase to flybase lookup
 - gem_mappability_dm6_100mer.mappability : Gem mappability file needed by FREEC. Thanks to Hangnoh Lee for creating this file for us
 - Tidalbase_transposon_sequence.fa : List of concensus transposon sequences (manually curated).
-- refflat_dm6.txt : RefSeq annotation from UCSC genome browser (table browser, track: Refseq Geens, table: refFlat, output format: all fields from table) 
+- refflat_dm6.txt : RefSeq annotation from UCSC genome browser (table browser, track: Refseq Genes, table: refFlat, output format: all fields from table) 
 - dm6.chr.len : tab delimited file with chromosome name and length
 
 Create Bowtie indices for fly_virus_structure_repbase.fa and Tidalbase_transposon_sequence.fa.
