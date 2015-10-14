@@ -26,12 +26,14 @@ Contents
    run
    outputs
 
-
 Support
 -------
-If you are having issues, please contact us directly or create a github issue.
+Please use Github issues to bring up any errors that occur with software.
 
 License
 -------
 The project is licensed under the BSD license (not sure what to put here).
 
+Acknowledgement
+---------------
+Thanks to David Tang for his blat parser script (`psl_to_bed_best_score.pl <http://davetang.org/muse/2012/05/15/using-blat/>`_)

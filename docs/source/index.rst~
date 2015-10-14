@@ -13,14 +13,7 @@ Features
 - Flexible (TIDAL can be run with SRA files, Paired End and Single End libraries)
 - Annotation Rich (TIDAL outputs have detailed annotation)
 - Increased Specificity (Less false positives in outputs)
-- Coverage Ratio
-
-
-Brief code block
-::
-
-    print 'Hello'
-    >>> Hello
+- Calculate coverage ratio to determine heterogenity of sites
 
 
 Contents
