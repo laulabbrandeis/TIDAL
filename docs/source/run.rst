@@ -16,7 +16,7 @@ Format of run file (tab delimited)
     S2R+    SRR497719       100
     OSS_C   SRR1185816      150
 
-**The first column header should be Library_ID**. The Library ID is used to name output files. The SRR Accession is used to download the file.
+The first column header should be Library_ID, this used to skip the header line. The Library ID is used to name output files. The SRR Accession is used to download the file.
 
 2. Run TIDAL_from_sra.sh
 ::
