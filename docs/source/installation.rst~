@@ -27,9 +27,13 @@ Download the source code from github.
 
 Annotation Files
 ----------------
-Download *Drosophilia Melanogaster* reference genome and masked reference genome sequence (Release 6/dm6 build) from UCSC genome browser, and set up their Bowtie and Bowtie2 indices (Bowtie2 indices are needed only for reference genome sequence). In our analysis, we only considered the sequences for chr2R, chr2L, chr3R, chr3L, chrX, chrY, and chr4. The rest of the `annotation files <https://github.com/laulabbrandeis/TIDAL/blob/master/annotation.tar.gz>`_ are automatically downloaded when the source code is cloned. These files need to be uncompressed, and can be updated by the user as needed. Some of these files are manually curated, and others were retrieved from UCSC genome browser. Here is a brief description of these files are created/collected: 
+The `annotation files <https://github.com/laulabbrandeis/TIDAL/blob/master/annotation.tar.gz>`_ are automatically downloaded when the source code is cloned. Uncompress the annotation files, which creates a directory with all the annotation files.
+::
 
+    cd /location_from_root/TIDAL
+    tar -zxvf annotation.tar.gz
 
+Some of these files are manually curated, and others were retrieved from UCSC genome browser. These files can be updated by the user as needed. Here is a brief description of these files are created/collected: 
 - repmasker_dm6_track.txt : Repeat masker track from UCSC genome browser (table browser, track: Repeatmasker, table: rmsk, output format: all fields from table) 
 - fly_virus_structure_repbase.fa: Manunally curated sequence from fly viruses, structural and repbase sequences (collected from UCSC genome )
 - Tidalbase_Dmel_TE_classifications_2015.txt : Custom table for repbase to flybase lookup
@@ -44,6 +48,8 @@ Create Bowtie indices for fly_virus_structure_repbase.fa and Tidalbase_transposo
     bowtie-build fly_virus_structure_repbase.fa fly_virus_structure_repbase
     bowtie-build Tidalbase_transposon_sequence.fa dm_TE
 
+Download *Drosophilia Melanogaster* reference genome and masked reference genome sequence (Release 6/dm6 build) from UCSC genome browser, and set up their Bowtie and Bowtie2 indices (Bowtie2 indices are needed only for reference genome sequence). In our analysis, we only considered the sequences for chr2R, chr2L, chr3R, chr3L, chrX, chrY, and chr4.
+
 
 Compile C code
 --------------------------------
@@ -55,9 +61,9 @@ Compile C code in TIDAL code directory
 
 Update Shell Scripts
 --------------------
-Update the following shell scripts with the location of the TIDAL code, annotation files and Bowtie indices. I recommend creating a TIDAL directory, with a subdirectory CODE for storing all the code, and another subdirectory annotation and 
+Update the following shell scripts with the location of the TIDAL code, annotation files and Bowtie indices.
 
-data_prep.sh
+**data_prep.sh**
 ::
 
     #location of TIDAL code from root
@@ -65,7 +71,69 @@ data_prep.sh
     #location of Trimmomatic
     TRIMMOMATICDIR="/location_from_root/Trimmomatic-0.30"  
 
+**insert_pipeline.sh**
+::
 
+    #location of TIDAL code
+    CODEDIR="/location_from_root/TIDAL/CODE"
+    #bowtie and bowtie2 indices, both have the same name in this case
+    genomedb="/location_from_root/dm6"
+    #location of masked genome bowtie indices
+    masked_genomedb="/location_from_root/dm6_mask"
+    #location of consensus TE sequence bowtie indices 
+    consensus_TEdb="/location_from_root/TIDAL/annotation/dm_TE"
+    #location of FREEC 
+    FREECDIR="/location_from_root/FREEC"
+    #Genome sequence in fasta format (all chromosome concatenated in one file)
+    GENOME="/location_from_root/dm6.fa"
+    #Refseq annotation from UCSC genome browser
+    refseq_annotationfile="/location_from_root/TIDAL/annotation/refflat_dm6.txt"
+    #tab delimited file with chromosome name and length
+    chrlen_file="/location_from_root/TIDAL/annotation/dm6.chr.len"
+    #directory of individual chromosome files needed by FREEC
+    chrDir="/location_from_root/dm6"
+    #gem mappability file locationa
+    gemMappabilityFile="/location_from_root/TIDAL/annotation/gem_mappability_dm6_100mer.mappability"
+    #bowtie indices of fly virus, structure and repbase sequence
+    fly_virus_structure_repbase_DB="/location_from_root/TIDAL/annotation/fly_virus_structure_repbase"
+
+**depletion_pipeline.sh**
+::
+
+    #location of TIDAL code
+    CODEDIR="/location_from_root/TIDAL/CODE"
+    #bowtie and bowtie2 indices, both have the same name in this case
+    genomedb="/location_from_root/dm6"
+    #location of masked genome bowtie indices
+    masked_genomedb="/location_from_root/dm6_mask"
+    #location of consensus TE sequence bowtie indices 
+    consensus_TEdb="/location_from_root/TIDAL/annotation/dm_TE"
+    #Genome sequence in fasta format (all chromosome concatenated in one file)
+    GENOME="/location_from_root/dm6.fa"
+    #Masked Genome sequence in fasta format (all chromosome concatenated in one file)
+    MASKED_GENOME="/location_from_root/dm6.fa.masked"
+    #Repeat masker file from repbase, downloaded from UCSC genome browser
+    repeat_masker_file="/location_from_root/TIDAL/annotation/repmasker_dm6_track.txt"
+    #Refseq annotation from UCSC genome browser
+    refseq_annotationfile="/location_from_root/TIDAL/annotation/refflat_dm6.txt"
+    #location of custom table for classification and coversion from flybase to repbase name, this ensures that the naming is consistent with flybase
+    table_lookup="/location_from_root/TIDAL/annotation/Tidalbase_Dmel_TE_classifications_2015.txt"
+    #tab delimited file with chromosome name and length
+    chrlen_file="/location_from_root/TIDAL/annotation/dm6.chr.len"
+
+**TIDAL_from_fastq.sh**
+::
+
+    #location of TIDAL code
+    CODEDIR="/location_from_root/TIDAL/CODE"
+
+**TIDAL_from_sra.sh**
+::
+
+    #location of TIDAL code
+    CODEDIR="/location_from_root/TIDAL/CODE"
+
+**Congratulations!!! Now, you are ready to run TIDAL.**
 
 
 
