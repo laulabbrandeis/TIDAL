@@ -34,7 +34,6 @@ The `annotation files <https://github.com/laulabbrandeis/TIDAL/blob/master/annot
     tar -zxvf annotation.tar.gz
 
 Some of these files are manually curated, and others were retrieved from UCSC genome browser. These files can be updated by the user as needed. Here is a brief description of these files are created/collected:
-
 * repmasker_dm6_track.txt : Repeat masker track from UCSC genome browser (table browser, track: Repeatmasker, table: rmsk, output format: all fields from table) 
 * fly_virus_structure_repbase.fa: Manunally curated sequence from fly viruses, structural and repbase sequences (collected from UCSC genome )
 * Tidalbase_Dmel_TE_classifications_2015.txt : Custom table for repbase to flybase lookup

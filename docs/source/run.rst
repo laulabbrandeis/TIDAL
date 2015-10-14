@@ -15,9 +15,8 @@ Format of run file (tab delimited)
     Library_ID      SRR_Accession   Min_Library_Length
     S2R+    SRR497719       100
     OSS_C   SRR1185816      150
-    OSC_E   SRR1185771      150
 
-**The column header in the file is important**
+**The first column header should be Library_ID**. The Library ID is used to name output files. The SRR Accession is used to download the file.
 
 2. Run TIDAL_from_sra.sh
 ::

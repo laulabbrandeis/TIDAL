@@ -17,7 +17,7 @@ Format of run file (tab delimited)
     OSS_C   SRR1185816      150
     OSC_E   SRR1185771      150
 
-**The column header in the file is important*
+**The column header in the file is important**
 
 2. Run TIDAL_from_sra.sh
 ::
