@@ -10,7 +10,7 @@ Software Dependencies
 - Trimmomatics (v. 0.30)
 - Bowtie (v. 1.0.0) and Bowtie2 (v. 2.1.0)
 - BLAT (v. 35x1)
-- FREEC (`Control-FREEC <http://bioinfo-out.curie.fr/projects/freec/>`_ v. 7.2, run freec with mapability tracks)
+- `Control-FREEC <http://bioinfo-out.curie.fr/projects/freec/>`_ v. 7.2, run freec with mapability tracks)
 - bedtools suite (v. 2.17.0)
 - awk and other basic unix tools are install
 - Perl (64bit)
@@ -48,8 +48,23 @@ Create Bowtie indices for fly_virus_structure_repbase.fa and Tidalbase_transposo
     bowtie-build fly_virus_structure_repbase.fa fly_virus_structure_repbase
     bowtie-build Tidalbase_transposon_sequence.fa dm_TE
 
-Download *Drosophilia Melanogaster* reference genome and masked reference genome sequence (Release 6/dm6 build) from UCSC genome browser, and set up their Bowtie and Bowtie2 indices (Bowtie2 indices are needed only for reference genome sequence). In our analysis, we only considered the sequences for chr2R, chr2L, chr3R, chr3L, chrX, chrY, and chr4.
+Download *Drosophilia Melanogaster* reference genome and masked reference genome sequence (Release 6/dm6 build) from UCSC genome browser, and set up their Bowtie and Bowtie2 indices (Bowtie2 indices are needed only for reference genome sequence). In our analysis, we only considered the sequences for chr2R, chr2L, chr3R, chr3L, chrX, chrY, and chr4. One of the requirement of of running Control FREEC is to provide the location of individual chromosome fasta files.
 
+You can use the script *download_ucsc_data.sh* to download dm6 reference genome, masked genome and individual chromosome fasta files. Update the CODEDIR variable in download_ucsc_data.sh.
+::
+
+    #location of TIDAL code
+    CODEDIR="/location_from_root/TIDAL/CODE"
+
+Now, run the script and set up the bowtie indices
+::
+
+    cd directory_of_choice 
+    ./download_ucsc_data.sh
+    #set up the required bowtie indices
+    bowtie-build dm6.fa dm6
+    bowtie2-build dm6.fa dm6
+    bowtie-build dm6.fa dm6_mask
 
 Compile C code
 --------------------------------
