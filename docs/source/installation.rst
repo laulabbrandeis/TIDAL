@@ -15,7 +15,7 @@ Software Dependencies
 - awk and other basic unix tools are install
 - Perl (64bit)
 
-fastq-dump, bowtie, and blat are assumed to be in path of the user running TIDAL, if they are not then add them to your path or add the necessary path before each call in all the shell scripts of the package. All sofatware version listed above show the version of the code used in the pipeline. The code has not been tested with other version of these tools, but we expect minimal issues for using different version of these softwares.TIDAL has only been tested in Linux/Unix environment. 
+fastq-dump, Bowtie/Bowtie2, and blat are assumed to be in path of the user running TIDAL, if they are not then add them to your path or add the necessary path before each call in all the shell scripts of the package. All sofatware version listed above show the version of the code used in the pipeline. The code has not been tested with other version of these tools, but we expect minimal issues for using different version of these softwares.TIDAL has only been tested in Linux/Unix environment. 
 
 Source Code
 -----------
