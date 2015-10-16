@@ -32,7 +32,7 @@ Please use Github issues to bring up any errors that occur with software.
 
 License
 -------
-The project is licensed under the BSD license (not sure what to put here).
+The project is licensed under the BSD license.
 
 Acknowledgement
 ---------------
