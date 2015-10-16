@@ -60,7 +60,7 @@ Now, run the script and set up the bowtie indices
 ::
 
     cd directory_of_choice 
-    ./download_ucsc_data.sh
+    /location_from_root/TIDAL/CODE/download_ucsc_data.sh
     #set up the required bowtie indices
     bowtie-build dm6.fa dm6
     bowtie2-build dm6.fa dm6
