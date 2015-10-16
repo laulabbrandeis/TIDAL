@@ -66,6 +66,7 @@ Now, run the script and set up the bowtie indices
     bowtie2-build dm6.fa dm6
     bowtie-build dm6.fa dm6_mask
 
+
 Compile C code
 --------------------------------
 Compile C code in TIDAL code directory
