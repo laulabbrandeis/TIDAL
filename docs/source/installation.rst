@@ -15,7 +15,7 @@ Software Dependencies
 - awk and other basic unix tools are install
 - Perl (64bit)
 
-All sofatware version listed above show the version of the code used in the pipeline. The code has not been tested with other version of these tools, but we expect minimal version changes.
+All sofatware version listed above show the version of the code used in the pipeline. The code has not been tested with other version of these tools, but we expect minimal version changes. TIDAL has only been tested in Linux/Unix environment. 
 
 Source Code
 -----------
