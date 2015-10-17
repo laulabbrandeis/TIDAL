@@ -1,6 +1,6 @@
 
 #!/bin/sh
-
+# This script runs the insertion part of the TIDAL pipeline
 # Input for this pipeline is the .uq file
 # for usage: pass filename and read length
 # ./insert_pipeline.sh libname.fastq.uq 151
@@ -152,7 +152,7 @@ echo -ne "  Number of Candidate sites:\t$uqr\n\n" >> summary
 #remove everything but the noGEN file
 rm $prefix.noGEN.*
 
-#-----------------------------------newrun.sh 
+#----------------------------------- alignment with blat
 old_candidate_insert=$prefix"_insert.txt"
 blat_query=$prefix"_insert.fa"
 
@@ -195,14 +195,14 @@ echo "Level 1 collapse of insertion sites in file: $level1file" >> summary
 uqr=$(grep -v "^Insertion"  $level1file | wc -l )
 echo -ne "  Number of Level 1 collapsed sites:\t$uqr\n\n" >> summary
 #--------------------------------------
- 
+# assigning annotation to insertion sites 
 level1sitesannotation=$prefix"_level1siteannotation.xls"
 perl $CODEDIR/rough_annotation_insertion_sites.pl -a $refseq_annotationfile $level1file > $level1sitesannotation
 echo "Level 1 annotation file: $level1sitesannotation" >> summary
 
 
 #---------------------------------------
-#this part is used for the heterogeniety score at the site of insertion
+#this part is used for the Coverage ratio at the site of insertion
 #---------------------------
 
 level1_corrected_bed=$prefix"_correct_bed.bed"

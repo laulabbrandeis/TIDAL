@@ -1,16 +1,10 @@
 #!/bin/sh
-GHOME="/nlmusr/gchirn/linux"
-RHOME="/nlmusr/reazur/linux"
-HOME=$GHOME
-
-# Input for this pipeline is the .uq file
-# $1 = OSS_C.fastq.uq
-#input=$1
+# This script runs the depletion part of the TIDAL pipeline
+# this script uses intermediate files created by the insertion part of the pipeline  
 prefix=${1%.fastq*}
 read_len=$2
 input=$prefix.noGEN
-#polyn_output=$1.polyn
-polyn_output=$1
+
 #----------------- Initializations -----------------
 #change the variables in this section as needed
 #location of TIDAL code
@@ -35,11 +29,10 @@ table_lookup="/nlmusr/reazur/linux/NELSON/TIDAL/annotation/Tidalbase_Dmel_TE_cla
 chrlen_file="/nlmusr/reazur/linux/NELSON/TIDAL/annotation/dm6.chr.len"
 #----------------- End initialization -------------------
 
-
 pushd depletion
 
 #----------------------------------------
-#get the 5' and 3' end of surviving reads...
+#get the 5' and 3' end of surviving reads ...
 length=22
 infile=$input
 perl $CODEDIR/get_front_end_reads.pl -l $length $infile
@@ -85,8 +78,6 @@ mv $input.ual $input.nogendel
 $CODEDIR/writeqc.sh $input $input.gendel match_dm6_mask_gen_del":$mismatch"
 
 #-----------------------------------------------
-
-
 # analysis of samfile files to identify candidate insertion sites
 frontgensam=$frontfile".gendel.sam"
 endgensam=$endfile".gendel.sam"
@@ -122,14 +113,14 @@ level1sitesannotation=$prefix"_level1siteannotation.xls"
 perl $CODEDIR/rough_annotation_depletion_sites.pl -a $refseq_annotationfile $level1file > $level1sitesannotation
 
 #----------------------------------
-#calculate refgene coverage of depletion sites
+#calculate coverage ratio of depletion sites
 bamfile=$prefix".sort.bam"
 
 #create bed file with the correct coordinate for 5prime
 level1_5prime_corrected_bed=$prefix"_5prime_sites.bed"
 perl $CODEDIR/create_bedfile_5prime_depletion_sites.pl -s $read_len $level1file > $level1_5prime_corrected_bed
 
-
+#get coverage for depletion sites
 coverage_file_5prime=$prefix"_5prime_refgene_count.xls"
 coverageBed -abam $bamfile -b $level1_5prime_corrected_bed > $coverage_file_5prime
 
@@ -145,13 +136,10 @@ strand_coverage_combined=$prefix"_depletion_coverage_combined.xls"
 perl $CODEDIR/combined_depletion_coverage.pl -s $read_len $coverage_file_5prime $coverage_file_3prime > $strand_coverage_combined
 
 
-#--------------------------------------------------------
+#combine coverage ratio values with the other attributes of the sites
 window=5000
-
 coverageFile=$strand_coverage_combined
 Depletion_Annotate_file=$prefix"_Depletion_Annotated.txt"
-
-
 perl $CODEDIR/concatenate_files_by_columns_with_header.pl $level1file $coverageFile $level1sitesannotation > dump.txt
 
 
