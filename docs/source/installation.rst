@@ -10,12 +10,12 @@ Software Dependencies
 - Trimmomatics (v. 0.30)
 - Bowtie (v. 1.0.0) and Bowtie2 (v. 2.1.0)
 - BLAT (v. 35x1)
-- `Control-FREEC <http://bioinfo-out.curie.fr/projects/freec/>`_ v. 7.2, run freec with mapability tracks)
+- `Control-FREEC <http://bioinfo-out.curie.fr/projects/freec/>`_ v. 7.2, run freec with mapability tracks (included in TIDAL for dm6))
 - bedtools suite (v. 2.17.0)
 - awk and other basic unix tools are install
 - Perl (64bit)
 
-fastq-dump, Bowtie/Bowtie2, and blat are assumed to be in path of the user running TIDAL, if they are not then add them to your path or add the necessary path before each call in all the shell scripts of the package. All sofatware version listed above show the version of the code used in the pipeline. The code has not been tested with other version of these tools, but we expect minimal issues for using different version of these softwares.TIDAL has only been tested in Linux/Unix environment. 
+fastq-dump, Bowtie/Bowtie2, and blat are assumed to be in path of the user running TIDAL, if they are not then add them to your path or add the necessary path before each call in all the shell scripts of TIDAL. All sofatware version listed above show the version of the code used in the pipeline. The code has not been tested with other version of these tools, but we expect minimal issues for using different version of these softwares. TIDAL has only been tested in Linux/Unix environment. The visualization of Control-FREEC output uses a modified version R script provided in source of code of FREEC.
 
 Source Code
 -----------
