@@ -34,13 +34,14 @@ The `annotation files <https://github.com/laulabbrandeis/TIDAL/blob/master/annot
     tar -zxvf annotation.tar.gz
 
 Some of these files are manually curated, and others were retrieved from UCSC genome browser. These files can be updated by the user as needed. Here is a brief description of these files are created/collected:
-* repmasker_dm6_track.txt : Repeat masker track from UCSC genome browser (table browser, track: Repeatmasker, table: rmsk, output format: all fields from table) 
-* fly_virus_structure_repbase.fa: Manunally curated sequence from fly viruses, structural and repbase sequences (collected from UCSC genome )
-* Tidalbase_Dmel_TE_classifications_2015.txt : Custom table for repbase to flybase lookup
-* gem_mappability_dm6_100mer.mappability : Gem mappability file needed by FREEC. Thanks to Hangnoh Lee for creating this file for us
-* Tidalbase_transposon_sequence.fa : List of concensus transposon sequences (manually curated).
-* refflat_dm6.txt : RefSeq annotation from UCSC genome browser (table browser, track: Refseq Genes, table: refFlat, output format: all fields from table) 
-* dm6.chr.len : tab delimited file with chromosome name and length
+
+- repmasker_dm6_track.txt : Repeat masker track from UCSC genome browser (table browser, track: Repeatmasker, table: rmsk, output format: all fields from table) 
+- fly_virus_structure_repbase.fa: Manunally curated sequence from fly viruses, structural and repbase sequences (collected from UCSC genome )
+- Tidalbase_Dmel_TE_classifications_2015.txt : Custom table for repbase to flybase lookup
+- gem_mappability_dm6_100mer.mappability : Gem mappability file needed by FREEC. Thanks to Hangnoh Lee for creating this file for us
+- Tidalbase_transposon_sequence.fa : List of concensus transposon sequences (manually curated).
+- refflat_dm6.txt : RefSeq annotation from UCSC genome browser (table browser, track: Refseq Genes, table: refFlat, output format: all fields from table) 
+- dm6.chr.len : tab delimited file with chromosome name and length
 
 Create Bowtie indices for fly_virus_structure_repbase.fa and Tidalbase_transposon_sequence.fa.
 ::
@@ -48,7 +49,7 @@ Create Bowtie indices for fly_virus_structure_repbase.fa and Tidalbase_transposo
     bowtie-build fly_virus_structure_repbase.fa fly_virus_structure_repbase
     bowtie-build Tidalbase_transposon_sequence.fa dm_TE
 
-Download *Drosophilia Melanogaster* reference genome and masked reference genome sequence (Release 6/dm6 build) from UCSC genome browser, and set up their Bowtie and Bowtie2 indices (Bowtie2 indices are needed only for reference genome sequence). In our analysis, we only considered the sequences for chr2R, chr2L, chr3R, chr3L, chrX, chrY, and chr4. One of the requirement of of running Control FREEC is to provide the location of individual chromosome fasta files.
+Download *Drosophilia melanogaster* reference genome and masked reference genome sequence (Release 6/dm6 build) from UCSC genome browser, and set up their Bowtie and Bowtie2 indices (Bowtie2 indices are needed only for reference genome sequence). In our analysis, we only considered the sequences for chr2R, chr2L, chr3R, chr3L, chrX, chrY, and chr4. One of the requirement of of running Control FREEC is to provide the location of individual chromosome fasta files.
 
 You can use the script *download_ucsc_data.sh* to download dm6 reference genome, masked genome and individual chromosome fasta files. Update the CODEDIR variable in download_ucsc_data.sh.
 ::
@@ -64,7 +65,7 @@ Now, run the script and set up the bowtie indices
     #set up the required bowtie indices
     bowtie-build dm6.fa dm6
     bowtie2-build dm6.fa dm6
-    bowtie-build dm6.fa dm6_mask
+    bowtie-build dm6.fa.masked dm6_mask
 
 
 Compile C code
