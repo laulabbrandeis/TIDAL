@@ -49,7 +49,7 @@ Create Bowtie indices for fly_virus_structure_repbase.fa and Tidalbase_transposo
     bowtie-build fly_virus_structure_repbase.fa fly_virus_structure_repbase
     bowtie-build Tidalbase_transposon_sequence.fa dm_TE
 
-Download *Drosophilia Melanogaster* reference genome and masked reference genome sequence (Release 6/dm6 build) from UCSC genome browser, and set up their Bowtie and Bowtie2 indices (Bowtie2 indices are needed only for reference genome sequence). In our analysis, we only considered the sequences for chr2R, chr2L, chr3R, chr3L, chrX, chrY, and chr4. One of the requirement of of running Control FREEC is to provide the location of individual chromosome fasta files.
+Download *Drosophilia melanogaster* reference genome and masked reference genome sequence (Release 6/dm6 build) from UCSC genome browser, and set up their Bowtie and Bowtie2 indices (Bowtie2 indices are needed only for reference genome sequence). In our analysis, we only considered the sequences for chr2R, chr2L, chr3R, chr3L, chrX, chrY, and chr4. One of the requirement of of running Control FREEC is to provide the location of individual chromosome fasta files.
 
 You can use the script *download_ucsc_data.sh* to download dm6 reference genome, masked genome and individual chromosome fasta files. Update the CODEDIR variable in download_ucsc_data.sh.
 ::
@@ -65,7 +65,7 @@ Now, run the script and set up the bowtie indices
     #set up the required bowtie indices
     bowtie-build dm6.fa dm6
     bowtie2-build dm6.fa dm6
-    bowtie-build dm6.fa dm6_mask
+    bowtie-build dm6.fa.masked dm6_mask
 
 
 Compile C code
