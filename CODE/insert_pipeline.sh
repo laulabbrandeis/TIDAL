@@ -143,7 +143,7 @@ perl $CODEDIR/unify_front_end_reads.pl -f $frontgensam -e $endTEsam -n $endgensa
     
 #qc
 echo "Candidate insertion sites in file: $candidate_insert" >> summary
-orig=$(grep -v "^Ident" $candidate_insert | cut -f1 | cut -d':' -f2 | $CODEDIR/sum)
+orig=$(grep -v "^Ident" $candidate_insert | cut -f1 | cut -d':' -f2 |  sed 's/ //g' | sed 's/  //g' | grep -v '^$' | sed 's/^/(/' | sed 's/$/)/' | tr '\n' '+' | sed 's/+$/=/' | tr '=' '\n' | bc -l )
 echo -ne "  reads:\t$orig\n" >> summary
 uqr=$(grep -v "^Ident" $candidate_insert | wc -l )
 echo -ne "  uqreads:\t$uqr\n" >> summary
