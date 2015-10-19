@@ -86,12 +86,12 @@ candidate_deletion=$prefix"_depletion.xls"
 perl $CODEDIR/identify_depletion_sites.pl -f $frontgensam -e $endgensam > $candidate_deletion
 
 #qc------------
-echo "Candidate breakpoint sites in file: $candidate_deletion" >> summary
+echo "Reads for candidate breakpoint sites in file: $candidate_deletion" >> summary
 orig=$(grep -v "^Ident" $candidate_deletion | cut -f1 | cut -d':' -f2 |  sed 's/ //g' | sed 's/  //g' | grep -v '^$' | sed 's/^/(/' | sed 's/$/)/' | tr '\n' '+' | sed 's/+$/=/' | tr '=' '\n' | bc -l)
 echo -ne "  reads:\t$orig\n" >> summary
 uqr=$(grep -v "^Ident" $candidate_deletion | wc -l )
-echo -ne "  uqreads:\t$uqr\n" >> summary
-echo -ne "  Number of reads supporting candidate sites:\t$uqr\n\n" >> summary
+echo -ne "  uqreads:\t$uqr\n\n" >> summary
+#echo -ne "  Number of uq reads supporting candidate sites:\t$uqr\n\n" >> summary
  
 #-------------------------------
 level1file=$prefix"_depletion_level1.xls"
