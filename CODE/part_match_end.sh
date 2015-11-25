@@ -13,7 +13,7 @@ database=$masked_genomedb
 
 input=$libname
 output=$input".gen.sam"
-bowtie -f -v $mismatch -S -k 5 -m 5 -p 9 $database $input $output
+bowtie -f -v $mismatch -S -k 5 -m 5 --strata --best -p 9 $database $input $output
 
 perl $CODEDIR/separate_aligned_unaligned.pl -f $input -s $output 
 mv $input.al $input.gen
@@ -32,7 +32,7 @@ mismatch=2
 database=$consensus_TEdb
 input=$libname
 output=$input".TE.sam"
-bowtie -f -v $mismatch -S -k 5 -m 5 -p 9 $database $input $output
+bowtie -f -v $mismatch -S -k 5 -m 5 --strata --best -p 9 $database $input $output
 
 
 perl $CODEDIR/separate_aligned_unaligned.pl -f $input -s $output 
