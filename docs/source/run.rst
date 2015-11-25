@@ -36,7 +36,9 @@ Congratulations!!! You have managed to run TIDAL, hope you get exciting results!
 TIDAL for other scenarios
 -------------------------
 TIDAL_from_sra.sh script can be modified to run for other special cases. Here are two examples: 
+
 1. TIDAL_from_sra_2files.sh: Combine two sra entry for one TIDAL run. This script can be modified to combine multiple sra entries.
+
 2. TIDAL_from_sra_DGRP.sh: DGRP libraries often have multiple libraries with varying length concatenated into one sra entry. Since, library length is an important aspect of TIDAL, it needs to carefully specified to isolate the necessay reads from the mixed library.
 
 Outputs
