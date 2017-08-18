@@ -33,7 +33,7 @@ To run TIDAL on fastq file, we need the library in fastq format and read length.
     # libname.fastq : DNA seq library
     # min_len : read length
  
-WARNING: the library filename should have *.fastq suffix. The code won†¢t work with *.fq suffix.
+WARNING: the library filename should have *.fastq suffix. The code will not work with *.fq suffix.
  
 Congratulations!!! You have managed to run TIDAL, hope you get exciting results!
 
