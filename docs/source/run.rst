@@ -29,8 +29,12 @@ TIDAL from fastq
 To run TIDAL on fastq file, we need the library in fastq format and read length.
 ::
 
-    nohup /location_from_root/TIDAL/CODE/TIDAL_from_fastq.sh file.fastq min_len &
-
+    nohup /location_from_root/TIDAL/CODE/TIDAL_from_fastq.sh libname.fastq min_len &
+    # libname.fastq : DNA seq library
+    # min_len : read length
+ 
+WARNING: the library filename should have *.fastq suffix. The code won†¢t work with *.fq suffix.
+ 
 Congratulations!!! You have managed to run TIDAL, hope you get exciting results!
 
 TIDAL for other scenarios
