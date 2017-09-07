@@ -50,6 +50,6 @@ ln -s $source $target
 rm -r *.DIR
 rm -r *.qc
 rm -r *.stat
-#gzip $1
-rm $1
+gzip $1
+#rm $1
 rm $uqfile
